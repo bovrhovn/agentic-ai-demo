@@ -16,7 +16,7 @@ if (string.IsNullOrEmpty(projectEndpoint))
 
 Console.WriteLine("Connecting to the Azure OpenAI service at: " + projectEndpoint);
 
-var modelDeploymentName = Environment.GetEnvironmentVariable("ModelDeploymentName");
+var modelDeploymentName = Environment.GetEnvironmentVariable("DEPLOYMENTNAME");
 if (string.IsNullOrEmpty(modelDeploymentName))
 {
     Console.WriteLine("Please set the ModelDeploymentName environment variable.");
