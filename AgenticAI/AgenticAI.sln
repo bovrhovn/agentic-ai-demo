@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenticAI.SimpleAgent", "AgenticAI.SimpleAgent\AgenticAI.SimpleAgent.csproj", "{211607D5-5556-46F2-807E-B14B80E501B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{655C917E-1F8B-423F-8D8B-0F23909842DC}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{211607D5-5556-46F2-807E-B14B80E501B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211607D5-5556-46F2-807E-B14B80E501B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211607D5-5556-46F2-807E-B14B80E501B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211607D5-5556-46F2-807E-B14B80E501B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
