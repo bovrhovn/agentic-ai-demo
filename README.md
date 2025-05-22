@@ -16,6 +16,7 @@ The demos are structured in the following way:
 
 - **AgenticAI.SimpleAgent**: A simple agent that uses another agent as a tool to get stock price. Code is in [`AgenticAI/AgenticAI.SimpleAgent`](AgenticAI/AgenticAI.SimpleAgent).
 - **AgenticAI.AgentWithStrategies**: Simple demonstration to use different agents with different execution strategies to control the flow with models only. Code is in [`AgenticAI/AgenticAI.AgentWithStrategies`](AgenticAI/AgenticAI.AgentWithStrategies).
+- **AgenticAI.SemanticKernelProcceses**: Simple demonstration to use Semantic Kernel to demonstrate how to create a simple process with a loop and a conditional exit. Code is in [`AgenticAI/AgenticAI.SemanticKernelProcesses`](AgenticAI/AgenticAI.SemanticKernelProcesses).
 
 
 To run the demo, you need to set up the environment by installing [.NET](https://dot.net). You can use editors like [Visual Studio](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/) to help running the demos.

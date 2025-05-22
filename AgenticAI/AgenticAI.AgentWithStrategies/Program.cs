@@ -66,14 +66,13 @@ ChatCompletionAgent ProjectManagerAgent =
 
 #pragma warning disable SKEXP0110
 AgentGroupChat chat = new(ProgramManagerAgent, SoftwareEngineerAgent, ProjectManagerAgent)
-#pragma warning restore SKEXP0110
+
 {
     ExecutionSettings =
         new()
         {
-#pragma warning disable SKEXP0110
             TerminationStrategy = new ApprovalTerminationStrategy
-#pragma warning restore SKEXP0110
+
             {
                 Agents = [ProjectManagerAgent],
                 MaximumIterations = 6,
@@ -92,9 +91,7 @@ Console.WriteLine($"# {AuthorRole.User}: '{input}'");
 
 await foreach (var content in chat.InvokeAsync())
 {
-#pragma warning disable SKEXP0001
     Console.WriteLine($"# {content.Role} - {content.AuthorName ?? "*"}: '{content.Content}'");
-#pragma warning restore SKEXP0001
 }
 
 Console.WriteLine("Done with multi-agent strategy with Azure OpenAI.");
