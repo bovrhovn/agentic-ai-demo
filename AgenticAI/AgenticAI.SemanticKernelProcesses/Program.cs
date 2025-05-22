@@ -7,6 +7,7 @@ using System.Diagnostics.CodeAnalysis;
 using AgenticAI.SemanticKernelProcesses;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.Agents;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Process.Tools;
 
