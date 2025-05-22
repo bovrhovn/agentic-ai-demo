@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Misc", "Misc", "{655C917E-1
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenticAI.AgentWithStrategies", "AgenticAI.AgentWithStrategies\AgenticAI.AgentWithStrategies.csproj", "{58011F38-D953-4B8C-A1D1-2AA87550B45E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,5 +19,9 @@ Global
 		{211607D5-5556-46F2-807E-B14B80E501B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{211607D5-5556-46F2-807E-B14B80E501B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{211607D5-5556-46F2-807E-B14B80E501B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58011F38-D953-4B8C-A1D1-2AA87550B45E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58011F38-D953-4B8C-A1D1-2AA87550B45E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58011F38-D953-4B8C-A1D1-2AA87550B45E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58011F38-D953-4B8C-A1D1-2AA87550B45E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

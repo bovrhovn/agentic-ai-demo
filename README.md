@@ -14,7 +14,8 @@ Agents developed using Foundry Agent Service have the following elements:
 
 The demos are structured in the following way:
 
-- **AgenticAI.SimpleAgent**: A simple agent that uses another agent as a tool to get stock price. Code is in `AgenticAI/AgenticAI.SimpleAgent`.
+- **AgenticAI.SimpleAgent**: A simple agent that uses another agent as a tool to get stock price. Code is in [`AgenticAI/AgenticAI.SimpleAgent`](AgenticAI/AgenticAI.SimpleAgent).
+- **AgenticAI.AgentWithStrategies**: Simple demonstration to use different agents with different execution strategies to control the flow with models only. Code is in [`AgenticAI/AgenticAI.AgentWithStrategies`](AgenticAI/AgenticAI.AgentWithStrategies).
 
 
 To run the demo, you need to set up the environment by installing [.NET](https://dot.net). You can use editors like [Visual Studio](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/) to help running the demos.
