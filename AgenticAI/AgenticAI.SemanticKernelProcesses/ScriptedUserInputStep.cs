@@ -45,9 +45,9 @@ public class ScriptedUserInputStep : KernelProcessStep<UserInputState>
 
     internal string GetNextUserMessage()
     {
-        if (_state != null && _state.CurrentInputIndex >= 0 && _state.CurrentInputIndex < this._state.UserInputs.Count)
+        if (_state != null && _state.CurrentInputIndex >= 0 && _state.CurrentInputIndex < _state.UserInputs.Count)
         {
-            var userMessage = this._state!.UserInputs[_state.CurrentInputIndex];
+            var userMessage = _state!.UserInputs[_state.CurrentInputIndex];
             _state.CurrentInputIndex++;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -72,7 +72,7 @@ public class ScriptedUserInputStep : KernelProcessStep<UserInputState>
     [Experimental("SKEXP0080")]
     public virtual async ValueTask GetUserInputAsync(KernelProcessStepContext context)
     {
-        var userMessage = this.GetNextUserMessage();
+        var userMessage = GetNextUserMessage();
         // Emit the user input
         if (string.IsNullOrEmpty(userMessage))
         {

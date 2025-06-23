@@ -43,12 +43,15 @@ PersistentAgentsClient client = new(projectEndpoint, new DefaultAzureCredential(
 PersistentAgent stockAgent = client.Administration.GetAgent(stockAgentId, CancellationToken.None);
 Console.WriteLine("Connected to stock agent: " + stockAgent.Name);
 
-ConnectedAgentToolDefinition connectedAgentDefinition = new(new ConnectedAgentDetails(stockAgent.Id, stockAgent.Name, "Gets the stock price of a company"));
+ConnectedAgentToolDefinition connectedAgentDefinition =
+    new(new ConnectedAgentDetails(stockAgent.Id, stockAgent.Name, "Gets the stock price of a company"));
 
 PersistentAgent mainAgent = client.Administration.CreateAgent(
     model: modelDeploymentName,
     name: "stock_price_bot",
-    instructions: "Your job is to get the stock price of a company, using the available tools.",
+    instructions:
+    "Your job is to get the stock price of a company, using the available tools. " +
+    "If no data is available, respond with 'I don't know'. Put the information about the date of the data.",
     tools: [connectedAgentDefinition]
 );
 
@@ -62,7 +65,7 @@ PersistentAgentThread thread = client.Threads.CreateThread();
 PersistentThreadMessage message = client.Messages.CreateMessage(
     thread.Id,
     MessageRole.User,
-    "What is the stock price of Microsoft?");
+    "What is the stock price of Microsoft? Give me your answer in EUR.");
 
 Console.WriteLine("Sending messages to agents....");
 // Run the agent
@@ -71,9 +74,8 @@ do
 {
     Thread.Sleep(TimeSpan.FromMilliseconds(500));
     run = client.Runs.GetRun(thread.Id, run.Id);
-}
-while (run.Status == RunStatus.Queued
-       || run.Status == RunStatus.InProgress);
+} while (run.Status == RunStatus.Queued
+         || run.Status == RunStatus.InProgress);
 
 Console.WriteLine("Run status: " + run.Status);
 // Confirm that the run completed successfully
@@ -107,16 +109,15 @@ foreach (var threadMessage in messages)
                     {
                         if (annotation is MessageTextUriCitationAnnotation urlAnnotation)
                         {
-                            response = response.Replace(urlAnnotation.Text, $" [{urlAnnotation.UriCitation.Title}]({urlAnnotation.UriCitation.Uri})");
+                            response = response.Replace(urlAnnotation.Text,
+                                $" [{urlAnnotation.UriCitation.Title}]({urlAnnotation.UriCitation.Uri})");
                         }
                     }
                 }
+
                 Console.Write($"Agent response: {response}");
                 break;
             }
-            case MessageImageFileContent imageFileItem:
-                Console.Write($"<image from ID: {imageFileItem.FileId}");
-                break;
         }
 
         Console.WriteLine();

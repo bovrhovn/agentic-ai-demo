@@ -1,13 +1,12 @@
-﻿/* Demonstrates the creation of a simple process that has multiple steps, takes
+﻿/*
+   Demonstrates the creation of a simple process that has multiple steps, takes
    user input, interacts with the chat completion service, and demonstrates cycles
    in the process.
 */
 
-using System.Diagnostics.CodeAnalysis;
 using AgenticAI.SemanticKernelProcesses;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.SemanticKernel;
-using Microsoft.SemanticKernel.Agents;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Process.Tools;
 
@@ -29,32 +28,32 @@ var builder = Kernel.CreateBuilder();
 builder.AddAzureOpenAIChatCompletion(deploymentName, endpoint, apiKey);
 var kernel = builder.Build();
 
+#region Process builder setup
+
 ProcessBuilder process = new("ChatBot");
 var introStep = process.AddStepFromType<IntroStep>();
 var userInputStep = process.AddStepFromType<ChatUserInputStep>();
 var responseStep = process.AddStepFromType<ChatBotResponseStep>();
 
+#endregion
+
 // Define the behavior when the process receives an external event
 process
     .OnInputEvent(ChatBotEvents.StartProcess)
     .SendEventTo(new ProcessFunctionTargetBuilder(introStep));
-
 // When the intro is complete, notify the userInput step
 introStep
     .OnFunctionResult()
     .SendEventTo(new ProcessFunctionTargetBuilder(userInputStep));
-
 // When the userInput step emits an exit event, send it to the end step
 userInputStep
     .OnEvent(ChatBotEvents.Exit)
     .StopProcess();
-
 // When the userInput step emits a user input event, send it to the assistantResponse step
 userInputStep
     .OnEvent(CommonEvents.UserInputReceived)
     .SendEventTo(new ProcessFunctionTargetBuilder(responseStep, parameterName: "userMessage"));
 // When the assistantResponse step emits a response, send it to the userInput step
-
 responseStep
     .OnEvent(ChatBotEvents.AssistantResponseGenerated)
     .SendEventTo(new ProcessFunctionTargetBuilder(userInputStep));
@@ -75,10 +74,6 @@ Console.WriteLine($"Diagram generated at: {generatedImagePath}");
 await using var runningProcess =
     await kernelProcess.StartAsync(kernel, new KernelProcessEvent() { Id = ChatBotEvents.StartProcess, Data = null });
 
-// <summary>
-/// The simplest implementation of a process step. IntroStep
-/// </summary>
-[Experimental("SKEXP0080")]
 sealed class IntroStep : KernelProcessStep
 {
     /// <summary>
@@ -87,14 +82,10 @@ sealed class IntroStep : KernelProcessStep
     [KernelFunction]
     public void PrintIntroMessage()
     {
-        System.Console.WriteLine("Welcome to Processes in Semantic Kernel.\n");
+        Console.WriteLine("Welcome to Processes in Semantic Kernel.\n");
     }
 }
 
-/// <summary>
-/// A step that elicits user input.
-/// </summary>
-[Experimental("SKEXP0080")]
 sealed class ChatUserInputStep : ScriptedUserInputStep
 {
     protected override void PopulateUserInputs(UserInputState state)
@@ -109,7 +100,7 @@ sealed class ChatUserInputStep : ScriptedUserInputStep
 
     public override async ValueTask GetUserInputAsync(KernelProcessStepContext context)
     {
-        var userMessage = this.GetNextUserMessage();
+        var userMessage = GetNextUserMessage();
 
         if (string.Equals(userMessage, "exit", StringComparison.OrdinalIgnoreCase))
         {
@@ -126,7 +117,6 @@ sealed class ChatUserInputStep : ScriptedUserInputStep
 /// <summary>
 /// A step that takes the user input from a previous step and generates a response from the chat completion service.
 /// </summary>
-[Experimental("SKEXP0080")]
 sealed class ChatBotResponseStep : KernelProcessStep<ChatBotState>
 {
     public static class ProcessFunctions
@@ -169,9 +159,9 @@ sealed class ChatBotResponseStep : KernelProcessStep<ChatBotState>
             throw new InvalidOperationException("Failed to get a response from the chat completion service.");
         }
 
-        System.Console.ForegroundColor = ConsoleColor.Yellow;
-        System.Console.WriteLine($"ASSISTANT: {response.Content}");
-        System.Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Yellow;
+        Console.WriteLine($"ASSISTANT: {response.Content}");
+        Console.ResetColor();
 
         // Update state with the response
         _state.ChatMessages.Add(response);

@@ -28,7 +28,7 @@ public static class JsonResultTranslator
     private static string ExtractJson(string result)
     {
         // Search for initial literal delimiter: ```
-        var startIndex = result.IndexOf(LiteralDelimiter, System.StringComparison.Ordinal);
+        var startIndex = result.IndexOf(LiteralDelimiter, StringComparison.Ordinal);
         if (startIndex < 0)
         {
             // No initial delimiter, return entire expression.
@@ -38,13 +38,13 @@ public static class JsonResultTranslator
         startIndex += LiteralDelimiter.Length;
 
         // Accommodate "json" prefix, if present.
-        if (JsonPrefix.Equals(result.Substring(startIndex, JsonPrefix.Length), System.StringComparison.OrdinalIgnoreCase))
+        if (JsonPrefix.Equals(result.Substring(startIndex, JsonPrefix.Length), StringComparison.OrdinalIgnoreCase))
         {
             startIndex += JsonPrefix.Length;
         }
 
         // Locate final literal delimiter
-        var endIndex = result.IndexOf(LiteralDelimiter, startIndex, System.StringComparison.OrdinalIgnoreCase);
+        var endIndex = result.IndexOf(LiteralDelimiter, startIndex, StringComparison.OrdinalIgnoreCase);
         if (endIndex < 0)
         {
             endIndex = result.Length;

@@ -1,6 +1,4 @@
-﻿// Load configuration from environment variables or user secrets.
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.SemanticKernel;
@@ -9,7 +7,7 @@ using Microsoft.SemanticKernel.Agents.Chat;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.AzureOpenAI;
 
-#region Env variables
+#region Program environment variables
 
 var deploymentName = Environment.GetEnvironmentVariable("DEPLOYMENTNAME");
 var apiKey = Environment.GetEnvironmentVariable("APIKEY");
@@ -198,7 +196,7 @@ do
         await foreach (ChatMessageContent response in chat.InvokeAsync())
         {
             Console.WriteLine();
-            Console.WriteLine($"{response.AuthorName.ToUpperInvariant()}:{Environment.NewLine}{response.Content}");
+            Console.WriteLine($"{response.AuthorName?.ToUpperInvariant()}:{Environment.NewLine}{response.Content}");
         }
     }
     catch (HttpOperationException exception)

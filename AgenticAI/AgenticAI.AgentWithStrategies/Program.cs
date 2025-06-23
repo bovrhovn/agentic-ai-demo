@@ -14,6 +14,8 @@ using Microsoft.SemanticKernel.ChatCompletion;
 
 Console.WriteLine("Hello Multi-Agent with Azure OpenAI and agent strategies!");
 
+#region Environment Variables
+
 var deploymentName = Environment.GetEnvironmentVariable("DEPLOYMENTNAME");
 var apiKey = Environment.GetEnvironmentVariable("APIKEY");
 var endpoint = Environment.GetEnvironmentVariable("ENDPOINTURL");
@@ -22,16 +24,23 @@ ArgumentException.ThrowIfNullOrEmpty(deploymentName);
 ArgumentException.ThrowIfNullOrEmpty(apiKey);
 ArgumentException.ThrowIfNullOrEmpty(endpoint);
 
+#endregion
+
+#region Kernel setup
+
 var builder = Kernel.CreateBuilder();
 builder.AddAzureOpenAIChatCompletion(deploymentName, endpoint, apiKey);
 var kernel = builder.Build();
+
+#endregion
+
 var ProgamManager = """
                         You are a program manager which will take the requirement and create a plan for creating app. Program Manager understands the 
                         user requirements and form the detail documents with requirements and costing. 
                     """;
 
 var SoftwareEngineer = """
-                          You are Software Engieer, and your goal is develop web app using HTML and JavaScript (JS) by taking into consideration all
+                          You are Software Engineer, and your goal is develop web app using HTML and JavaScript (JS) by taking into consideration all
                           the requirements given by Program Manager. 
                        """;
 
@@ -64,9 +73,7 @@ ChatCompletionAgent ProjectManagerAgent =
         Kernel = kernel
     };
 
-#pragma warning disable SKEXP0110
 AgentGroupChat chat = new(ProgramManagerAgent, SoftwareEngineerAgent, ProjectManagerAgent)
-
 {
     ExecutionSettings =
         new()
