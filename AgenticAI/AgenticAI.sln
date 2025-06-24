@@ -18,6 +18,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenticAI.SimpleAgentWithPl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenticAI.ChatWithAzureOpenAI", "AgenticAI.ChatWithAzureOpenAI\AgenticAI.ChatWithAzureOpenAI.csproj", "{9682C1C5-38D8-4007-89A0-FA0D3451B34D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0-OpenAI and Agent Call from AI foundry", "0-OpenAI and Agent Call from AI foundry", "{1F93ED64-42EA-43C8-A6F1-BA018AE4F670}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Semantic kernel patterns", "1-Semantic kernel patterns", "{C31F9881-1001-483E-A348-F75AE8A2DB1E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Process Framework", "3-Process Framework", "{1CFCE278-8B4C-4E27-96DC-D362024139DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenticAI.HandoffStrategy", "AgenticAI.HandoffStrategy\AgenticAI.HandoffStrategy.csproj", "{9D768355-50B4-48DF-8564-B37FD6B7AEFF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,11 +96,31 @@ Global
 		{9682C1C5-38D8-4007-89A0-FA0D3451B34D}.Release|x64.Build.0 = Release|Any CPU
 		{9682C1C5-38D8-4007-89A0-FA0D3451B34D}.Release|x86.ActiveCfg = Release|Any CPU
 		{9682C1C5-38D8-4007-89A0-FA0D3451B34D}.Release|x86.Build.0 = Release|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Debug|x64.Build.0 = Debug|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Debug|x86.Build.0 = Debug|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|x64.ActiveCfg = Release|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|x64.Build.0 = Release|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|x86.ActiveCfg = Release|Any CPU
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {804FC7CF-573F-407A-9AAA-CFB277F70CDE}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9682C1C5-38D8-4007-89A0-FA0D3451B34D} = {1F93ED64-42EA-43C8-A6F1-BA018AE4F670}
+		{211607D5-5556-46F2-807E-B14B80E501B3} = {1F93ED64-42EA-43C8-A6F1-BA018AE4F670}
+		{58011F38-D953-4B8C-A1D1-2AA87550B45E} = {C31F9881-1001-483E-A348-F75AE8A2DB1E}
+		{B028D565-E2FD-4C4F-B8AB-84CCAA443EEB} = {C31F9881-1001-483E-A348-F75AE8A2DB1E}
+		{0EC3815F-8362-4E4A-8640-05466E3B3388} = {1CFCE278-8B4C-4E27-96DC-D362024139DB}
+		{9D768355-50B4-48DF-8564-B37FD6B7AEFF} = {C31F9881-1001-483E-A348-F75AE8A2DB1E}
 	EndGlobalSection
 EndGlobal

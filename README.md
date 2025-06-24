@@ -18,6 +18,7 @@ The demos are structured in the following way:
 - **AgenticAI.SimpleAgentWithPlugin**: A simple agent that uses another agent as a tool - writer and retrieval. Code is in [`AgenticAI/AgenticAI.SimpleAgent`](AgenticAI/AgenticAI.SimpleAgentWihPlugin).
 - **AgenticAI.AgentWithStrategies**: Simple demonstration to use different agents with different execution strategies to control the flow with models only. Code is in [`AgenticAI/AgenticAI.AgentWithStrategies`](AgenticAI/AgenticAI.AgentWithStrategies).
 - **AgenticAI.SemanticKernelProcceses**: Simple demonstration to use Semantic Kernel to demonstrate how to create a simple process with a loop and a conditional exit. Code is in [`AgenticAI/AgenticAI.SemanticKernelProcesses`](AgenticAI/AgenticAI.SemanticKernelProcesses).
+- **AgenticAI.HandoffStrategy**: Demonstration of how to use handoff strategy to control the flow of the agent. Code is in [`AgenticAI/AgenticAI.HandoffStrategy`](AgenticAI/AgenticAI.HandoffStrategy).
 
 To run the demo, you need to set up the environment by installing [.NET](https://dot.net). You can use editors like [Visual Studio](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/) to help running the demos.
 Dotnet CLI is a cross-platform toolchain for developing, building, running, and publishing .NET applications. You can use it to run the demos from the command line.
@@ -37,6 +38,7 @@ Set-EnvironmentVariable -Name "StockAgentId" -Value "<id from created agent in A
 dotnet run
 
 ```
+Pictures are from [Microsoft Docs webpage](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-orchestration/handoff?pivots=programming-language-csharp).
 
 # Additional Resources
 

@@ -1,0 +1,13 @@
+﻿Semantic Kernel is an open-source SDK developed by Microsoft that enables developers 
+to integrate Large Language Models (LLMs) like OpenAI's GPT or Azure OpenAI into their C# applications. 
+It provides a powerful abstraction layer that combines traditional programming with AI capabilities, 
+allowing developers to define and orchestrate "semantic functions"—natural language prompts 
+that can be treated like regular code functions. These functions can be composed, chained, 
+and combined with native C# code, making it easier to build intelligent applications that understand and generate human-like text.
+In C#, Semantic Kernel supports features like memory storage, planning, and function chaining, 
+which are essential for building context-aware and goal-driven applications. Developers can use it to create chatbots, 
+summarization tools, or even autonomous agents that can reason and act based on user input. 
+The SDK is designed to be modular and extensible, allowing seamless integration 
+with external services and custom plugins. With Semantic Kernel, 
+C# developers can harness the power of AI while maintaining the structure and reliability 
+of traditional software engineering.

@@ -1,0 +1,3 @@
+﻿Semantic Kernel C# is great, use it. What a tool. 
+I love it. It allows me to build intelligent applications that can understand and generate human-like text.
+And does all the work for me :)

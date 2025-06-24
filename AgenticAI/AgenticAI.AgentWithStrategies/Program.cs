@@ -12,7 +12,7 @@ using Microsoft.SemanticKernel;
 using Microsoft.SemanticKernel.Agents;
 using Microsoft.SemanticKernel.ChatCompletion;
 
-Console.WriteLine("Hello Multi-Agent with Azure OpenAI and agent strategies!");
+Console.WriteLine("SuperVisor with OpenAI strategy!");
 
 #region Environment Variables
 
@@ -79,17 +79,15 @@ AgentGroupChat chat = new(ProgramManagerAgent, SoftwareEngineerAgent, ProjectMan
         new()
         {
             TerminationStrategy = new ApprovalTerminationStrategy
-
             {
                 Agents = [ProjectManagerAgent],
-                MaximumIterations = 6,
+                MaximumIterations = 6
             }
         }
 };
 
 var input = """
-
-            I want to develop calculator app. 
+            I want to develop calculator app.
             Keep it very simple. And get final approval from manager.
             """;
 

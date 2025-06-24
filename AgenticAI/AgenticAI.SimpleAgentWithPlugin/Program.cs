@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿#region Usings
+
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Text.Json;
 using Microsoft.SemanticKernel;
@@ -7,7 +9,11 @@ using Microsoft.SemanticKernel.Agents.Chat;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.AzureOpenAI;
 
+#endregion
+
 #region Environment Variables
+
+Console.WriteLine("Maker Agents pattern with Semantic Kernel...");
 
 var deploymentName = Environment.GetEnvironmentVariable("DEPLOYMENTNAME");
 ArgumentException.ThrowIfNullOrEmpty(deploymentName);
@@ -24,8 +30,6 @@ var kernel = builder.Build();
 
 var toolKernel = kernel.Clone();
 toolKernel.Plugins.AddFromType<ClipboardAccess>();
-
-Console.WriteLine("Defining agents...");
 
 const string ReviewerName = "Reviewer";
 const string WriterName = "Writer";
@@ -67,7 +71,7 @@ ChatCompletionAgent agentWriter =
         Kernel = kernel,
     };
 
-KernelFunction selectionFunction =
+var selectionFunction =
     AgentGroupChat.CreatePromptFunctionForStrategy(
         $$$"""
            Examine the provided RESPONSE and choose the next participant.
@@ -90,7 +94,7 @@ KernelFunction selectionFunction =
 
 const string TerminationToken = "yes";
 
-KernelFunction terminationFunction =
+var terminationFunction =
     AgentGroupChat.CreatePromptFunctionForStrategy(
         $$$"""
            Examine the RESPONSE and determine whether the content has been deemed satisfactory.
@@ -120,7 +124,7 @@ AgentGroupChat chat =
                     // The prompt variable name for the history argument.
                     HistoryVariableName = "lastmessage",
                     // Returns the entire result value as a string.
-                    ResultParser = (result) => result.GetValue<string>() ?? agentReviewer.Name
+                    ResultParser = result => result.GetValue<string>() ?? agentReviewer.Name
                 },
             TerminationStrategy =
                 new KernelFunctionTerminationStrategy(terminationFunction, kernel)
@@ -134,16 +138,18 @@ AgentGroupChat chat =
                     // Limit total number of turns
                     MaximumIterations = 12,
                     // Customer result parser to determine if the response is "yes"
-                    ResultParser = (result) =>
+                    ResultParser = result =>
                         result.GetValue<string>()?.Contains(TerminationToken, StringComparison.OrdinalIgnoreCase) ??
                         false
                 }
         }
     };
 
-Console.WriteLine("Ready!");
-
-bool isComplete = false;
+Console.WriteLine("Ready to start with reviews!");
+//set the base path for file access
+var basePath = Environment.GetEnvironmentVariable("BASEPATH");
+ArgumentException.ThrowIfNullOrEmpty(basePath);
+var isComplete = false;
 do
 {
     Console.WriteLine();
@@ -151,7 +157,7 @@ do
     #region CLI menu
 
     Console.Write("> ");
-    string input = Console.ReadLine() ?? string.Empty;
+    var input = Console.ReadLine() ?? string.Empty;
     if (string.IsNullOrWhiteSpace(input))
         continue;
 
@@ -169,9 +175,11 @@ do
         continue;
     }
 
-    if (input.StartsWith("@", StringComparison.Ordinal) && input.Length > 1)
+    if (input.StartsWith("@", StringComparison.Ordinal) && input.Length >= 1)
     {
-        string filePath = input.Substring(1);
+        var filePath = input.Length == 1
+            ? Path.Join(basePath, "test.txt")
+            : Path.Join(basePath, input.Substring(1));
         try
         {
             if (!File.Exists(filePath))
@@ -192,12 +200,11 @@ do
     #endregion
 
     chat.AddChatMessage(new ChatMessageContent(AuthorRole.User, input));
-
-    chat.IsComplete = false;
+    chat.IsComplete = false; //chat was not complete, so reset the flag
 
     try
     {
-        await foreach (ChatMessageContent response in chat.InvokeAsync())
+        await foreach (var response in chat.InvokeAsync())
         {
             Console.WriteLine();
             Console.WriteLine($"{response.AuthorName?.ToUpperInvariant()}:{Environment.NewLine}{response.Content}");
@@ -228,7 +235,7 @@ sealed class ClipboardAccess
     {
         if (string.IsNullOrWhiteSpace(content)) return;
 
-        using Process clipProcess = Process.Start(
+        using var clipProcess = Process.Start(
             new ProcessStartInfo
             {
                 FileName = "clip",
