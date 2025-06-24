@@ -92,7 +92,7 @@ HandoffOrchestration orchestration =
             Console.WriteLine($"\n# INPUT: {input}\n");
             return ValueTask.FromResult(new ChatMessageContent(AuthorRole.User, input));
         },
-        ResponseCallback = (ChatMessageContent content) =>
+        ResponseCallback = content =>
         {
             Console.WriteLine($"\n# RESPONSE: {content.Content}\n");
             return ValueTask.CompletedTask;
