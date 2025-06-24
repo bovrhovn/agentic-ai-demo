@@ -19,6 +19,7 @@ The demos are structured in the following way:
 - **AgenticAI.AgentWithStrategies**: Simple demonstration to use different agents with different execution strategies to control the flow with models only. Code is in [`AgenticAI/AgenticAI.AgentWithStrategies`](AgenticAI/AgenticAI.AgentWithStrategies).
 - **AgenticAI.SemanticKernelProcceses**: Simple demonstration to use Semantic Kernel to demonstrate how to create a simple process with a loop and a conditional exit. Code is in [`AgenticAI/AgenticAI.SemanticKernelProcesses`](AgenticAI/AgenticAI.SemanticKernelProcesses).
 - **AgenticAI.HandoffStrategy**: Demonstration of how to use handoff strategy to control the flow of the agent. Code is in [`AgenticAI/AgenticAI.HandoffStrategy`](AgenticAI/AgenticAI.HandoffStrategy).
+- **AgenticAI.SequentialStrategy**: Demonstration of how to use sequential strategy to control the flow of the agent. Code is in [`AgenticAI/AgenticAI.SequentialStrategy`](AgenticAI/AgenticAI.SequentialStrategy).
 
 To run the demo, you need to set up the environment by installing [.NET](https://dot.net). You can use editors like [Visual Studio](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/) to help running the demos.
 Dotnet CLI is a cross-platform toolchain for developing, building, running, and publishing .NET applications. You can use it to run the demos from the command line.
@@ -33,7 +34,8 @@ Set-EnvironmentVariable -Name "DEPLOYMENTNAME" -Value "<your-endpoint-to-the-dep
 Set-EnvironmentVariable -Name "APIKEY" -Value "<your-api-key-from-model-deployed>" -Scope Process
 Set-EnvironmentVariable -Name "ENDPOINTURL" -Value "<your-endpoint-to-the-deployed-model>" -Scope Process
 Set-EnvironmentVariable -Name "ProjectEndpoint" -Value "<your-endpoint-to-azure-foundry-ai-project>" -Scope Process
-Set-EnvironmentVariable -Name "StockAgentId" -Value "<id from created agent in Azure Foundry>" -Scope Process
+## Bing connection id is in the format of /subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.CognitiveServices/accounts/<ai_service_name>/projects/<project_name>/connections/<connection_name>
+Set-EnvironmentVariable -Name "BING_CONNECTION_ID" -Value "Bing connection id" -Scope Process
 
 dotnet run
 
