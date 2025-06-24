@@ -48,3 +48,12 @@ Pictures are from [Microsoft Docs webpage](https://learn.microsoft.com/en-us/sem
 2. [Azure AI Foundry Agent Service](https://learn.microsoft.com/en-us/azure/ai-foundry/agent-service/)
 3. [Azure AI Foundry Agent Service - Quickstart](https://learn.microsoft.com/en-us/azure/ai-foundry/agent-service/quickstart/)
 4. [AI agent foundamentals](https://learn.microsoft.com/en-us/training/modules/ai-agent-fundamentals)
+5. [Semantic Kernel Agent Orchestration](https://learn.microsoft.com/en-us/semantic-kernel/frameworks/agent/agent-orchestration/)
+
+# Trademarks
+
+This project may contain trademarks or logos for projects, products, or services. Authorized use of Microsoft trademarks
+or logos is subject to and must
+follow [Microsoft's Trademark & Brand Guidelines](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks?oneroute=true).
+Use of Microsoft trademarks or logos in modified versions of this project must not cause confusion or imply Microsoft
+sponsorship. Any use of third-party trademarks or logos are subject to those third-party's policies.
