@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Process Framework", "3-Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenticAI.HandoffStrategy", "AgenticAI.HandoffStrategy\AgenticAI.HandoffStrategy.csproj", "{9D768355-50B4-48DF-8564-B37FD6B7AEFF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgenticAI.SequentialStrategy", "AgenticAI.SequentialStrategy\AgenticAI.SequentialStrategy.csproj", "{56B59263-93BB-4154-B2FA-DCB98D406DA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,18 @@ Global
 		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|x64.Build.0 = Release|Any CPU
 		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|x86.ActiveCfg = Release|Any CPU
 		{9D768355-50B4-48DF-8564-B37FD6B7AEFF}.Release|x86.Build.0 = Release|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Debug|x64.Build.0 = Debug|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Debug|x86.Build.0 = Debug|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Release|x64.ActiveCfg = Release|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Release|x64.Build.0 = Release|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Release|x86.ActiveCfg = Release|Any CPU
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,5 +136,6 @@ Global
 		{B028D565-E2FD-4C4F-B8AB-84CCAA443EEB} = {C31F9881-1001-483E-A348-F75AE8A2DB1E}
 		{0EC3815F-8362-4E4A-8640-05466E3B3388} = {1CFCE278-8B4C-4E27-96DC-D362024139DB}
 		{9D768355-50B4-48DF-8564-B37FD6B7AEFF} = {C31F9881-1001-483E-A348-F75AE8A2DB1E}
+		{56B59263-93BB-4154-B2FA-DCB98D406DA4} = {C31F9881-1001-483E-A348-F75AE8A2DB1E}
 	EndGlobalSection
 EndGlobal
