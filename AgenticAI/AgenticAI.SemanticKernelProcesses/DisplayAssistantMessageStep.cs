@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.SemanticKernel;
+﻿using Microsoft.SemanticKernel;
 
 namespace AgenticAI.SemanticKernelProcesses;
 
@@ -7,7 +6,6 @@ namespace AgenticAI.SemanticKernelProcesses;
 /// Step used in the Processes Samples:
 /// - Step_02_AccountOpening.cs
 /// </summary>
-[Experimental("SKEXP0080")]
 public class DisplayAssistantMessageStep : KernelProcessStep
 {
     public static class ProcessStepFunctions
@@ -16,7 +14,6 @@ public class DisplayAssistantMessageStep : KernelProcessStep
     }
 
     [KernelFunction(ProcessStepFunctions.DisplayAssistantMessage)]
-    [Experimental("SKEXP0080")]
     public async ValueTask DisplayAssistantMessageAsync(KernelProcessStepContext context, string assistantMessage)
     {
         Console.ForegroundColor = ConsoleColor.Blue;

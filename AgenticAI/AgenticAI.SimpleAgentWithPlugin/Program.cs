@@ -7,14 +7,13 @@ using Microsoft.SemanticKernel.Agents.Chat;
 using Microsoft.SemanticKernel.ChatCompletion;
 using Microsoft.SemanticKernel.Connectors.AzureOpenAI;
 
-#region Program environment variables
+#region Environment Variables
 
 var deploymentName = Environment.GetEnvironmentVariable("DEPLOYMENTNAME");
-var apiKey = Environment.GetEnvironmentVariable("APIKEY");
-var endpoint = Environment.GetEnvironmentVariable("ENDPOINTURL");
-
 ArgumentException.ThrowIfNullOrEmpty(deploymentName);
+var apiKey = Environment.GetEnvironmentVariable("APIKEY");
 ArgumentException.ThrowIfNullOrEmpty(apiKey);
+var endpoint = Environment.GetEnvironmentVariable("ENDPOINTURL");
 ArgumentException.ThrowIfNullOrEmpty(endpoint);
 
 #endregion
@@ -49,7 +48,7 @@ ChatCompletionAgent agentReviewer =
             - Never repeat previous suggestions.
             """,
         Kernel = toolKernel,
-        Arguments = new KernelArguments(new AzureOpenAIPromptExecutionSettings()
+        Arguments = new KernelArguments(new AzureOpenAIPromptExecutionSettings
             { FunctionChoiceBehavior = FunctionChoiceBehavior.Auto() })
     };
 
@@ -148,6 +147,9 @@ bool isComplete = false;
 do
 {
     Console.WriteLine();
+
+    #region CLI menu
+
     Console.Write("> ");
     string input = Console.ReadLine() ?? string.Empty;
     if (string.IsNullOrWhiteSpace(input))
@@ -187,6 +189,8 @@ do
         }
     }
 
+    #endregion
+
     chat.AddChatMessage(new ChatMessageContent(AuthorRole.User, input));
 
     chat.IsComplete = false;
@@ -208,7 +212,7 @@ do
             if (exception.InnerException.Data.Count > 0)
             {
                 Console.WriteLine(JsonSerializer.Serialize(exception.InnerException.Data,
-                    new JsonSerializerOptions() { WriteIndented = true }));
+                    new JsonSerializerOptions { WriteIndented = true }));
             }
         }
     }

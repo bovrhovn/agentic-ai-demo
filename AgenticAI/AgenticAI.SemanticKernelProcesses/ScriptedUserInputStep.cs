@@ -1,9 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.SemanticKernel;
+﻿using Microsoft.SemanticKernel;
 
 namespace AgenticAI.SemanticKernelProcesses;
 
-[Experimental("SKEXP0080")]
 public class ScriptedUserInputStep : KernelProcessStep<UserInputState>
 {
     public static class ProcessStepFunctions
@@ -24,7 +22,6 @@ public class ScriptedUserInputStep : KernelProcessStep<UserInputState>
     /// <param name="state">The initialized state object for the step.</param>
     protected virtual void PopulateUserInputs(UserInputState state)
     {
-        return;
     }
 
     /// <summary>
@@ -33,7 +30,6 @@ public class ScriptedUserInputStep : KernelProcessStep<UserInputState>
     /// </summary>
     /// <param name="state">The state object for the step.</param>
     /// <returns>A <see cref="ValueTask"/></returns>
-    [Experimental("SKEXP0080")]
     public override ValueTask ActivateAsync(KernelProcessStepState<UserInputState> state)
     {
         _state = state.State;
@@ -69,7 +65,6 @@ public class ScriptedUserInputStep : KernelProcessStep<UserInputState>
     /// used to emit events from within a KernelFunction.</param>
     /// <returns>A <see cref="ValueTask"/></returns>
     [KernelFunction(ProcessStepFunctions.GetUserInput)]
-    [Experimental("SKEXP0080")]
     public virtual async ValueTask GetUserInputAsync(KernelProcessStepContext context)
     {
         var userMessage = GetNextUserMessage();

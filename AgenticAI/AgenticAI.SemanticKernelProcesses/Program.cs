@@ -72,7 +72,7 @@ Console.WriteLine($"Diagram generated at: {generatedImagePath}");
 
 // Start the process with an initial external event
 await using var runningProcess =
-    await kernelProcess.StartAsync(kernel, new KernelProcessEvent() { Id = ChatBotEvents.StartProcess, Data = null });
+    await kernelProcess.StartAsync(kernel, new KernelProcessEvent { Id = ChatBotEvents.StartProcess, Data = null });
 
 sealed class IntroStep : KernelProcessStep
 {
